@@ -38,13 +38,13 @@ template = '''
 rows_html = ""
 for dance in dances:
     rows_html += "<tr>"
-    rows_html += f"<td>{dance[0]}</td>"
     rows_html += f"<td>{dance[1]}</td>"
     rows_html += f"<td>{dance[2]}</td>"
     rows_html += f"<td>{dance[3]}</td>"
     rows_html += f"<td>{dance[4]}</td>"
     rows_html += f"<td>{dance[5]}</td>"
     rows_html += f"<td>{dance[6]}</td>"
+    rows_html += f"<td>{dance[7]}</td>"
     rows_html += "</tr>"
 
 

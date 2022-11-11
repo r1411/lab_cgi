@@ -69,7 +69,7 @@ def execute_insert_commit(sql, data):
 
 def get_all_dances_joined():
     sql = '''
-        SELECT Dances.title as dance_title, difficulty, Tracks.title as track_title, duration, Artists.name as artist_name, birthday, country FROM Dances 
+        SELECT Dances.id_dance, Dances.title as dance_title, difficulty, Tracks.title as track_title, duration, Artists.name as artist_name, birthday, country FROM Dances 
         JOIN Tracks ON Dances.id_track = Tracks.id_track 
         JOIN Artists ON Tracks.id_artist = Artists.id_artist
     '''
@@ -77,7 +77,7 @@ def get_all_dances_joined():
 
 def get_all_tracks_joined():
     sql = '''
-        SELECT Tracks.title as track_title, duration, Artists.name as artist_name, birthday, country FROM Tracks 
+        SELECT Tracks.id_track, Tracks.title as track_title, duration, Artists.name as artist_name, birthday, country FROM Tracks 
         JOIN Artists ON Tracks.id_artist = Artists.id_artist
     '''
     return execute_fetch(sql)
@@ -95,3 +95,7 @@ def add_artist(name, birthday, country):
 def add_track(artist_id, title, duration):
     sql = 'INSERT INTO Tracks(id_artist, title, duration) VALUES (?, ?, ?)'
     execute_insert_commit(sql, (artist_id, title, duration))
+
+def add_dance(title, difficulty, track_id):
+    sql = 'INSERT INTO Dances(title, difficulty, id_track) VALUES (?, ?, ?)'
+    execute_insert_commit(sql, (title, difficulty, track_id))

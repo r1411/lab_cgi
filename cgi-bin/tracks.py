@@ -36,11 +36,11 @@ template = '''
 rows_html = ""
 for track in tracks:
     rows_html += "<tr>"
-    rows_html += f"<td>{track[0]}</td>"
     rows_html += f"<td>{track[1]}</td>"
     rows_html += f"<td>{track[2]}</td>"
     rows_html += f"<td>{track[3]}</td>"
     rows_html += f"<td>{track[4]}</td>"
+    rows_html += f"<td>{track[5]}</td>"
     rows_html += "</tr>"
 
 
