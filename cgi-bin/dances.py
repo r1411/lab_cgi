@@ -19,7 +19,8 @@ template = '''
         </head>
         <body>
             <h1>Список танцев:</h1>
-            <table>
+            <a class="h3 link-primary" href="/">На главную</a>
+            <table class="table w-100 mx-4">
                 <tr>
                     <th>Имя танца</th>
                     <th>Сложность</th>

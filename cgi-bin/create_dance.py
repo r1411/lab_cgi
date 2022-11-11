@@ -39,6 +39,7 @@ template = '''
         </head>
         <body>
             <h1>Создание танца</h1>
+            <a class="h3 link-primary" href="/">На главную</a>
             <div class="ps-4 pe-4">
                 <form method="GET">
                     <label class="form-label" for="track_id">Трек</label>

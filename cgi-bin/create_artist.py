@@ -37,6 +37,7 @@ template = '''
         </head>
         <body>
             <h1>Создание артиста</h1>
+            <a class="h3 link-primary" href="/">На главную</a>
             <div class="ps-4 pe-4">
                 <form method="GET">
                     <label class="form-label" for="artist_name">Имя артиста</label>
