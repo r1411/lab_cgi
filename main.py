@@ -19,7 +19,7 @@ class MyHandler(CGIHTTPRequestHandler):
 def main():
     # db.setup_tables()
     # db.add_test_data()
-    server_addr = ('localhost', 8080)
+    server_addr = ('0.0.0.0', 8080)
     handler = MyHandler
     handler.cgi_directories = ["/cgi-bin"]
     server = HTTPServer(server_addr, handler)
