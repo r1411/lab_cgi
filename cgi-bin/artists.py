@@ -29,6 +29,7 @@ template = '''
                 </tr>
                 {rows_html}
             </table>
+            <a class="h3 link-primary" href="/get_artists_xml.py" download="artists.xml">Выгрузить XML</a>
         </body>
     </html>
 '''

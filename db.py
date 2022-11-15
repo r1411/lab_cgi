@@ -1,6 +1,12 @@
 import sqlite3
 con = sqlite3.connect("dances.db")
 
+tables_whitelist = [
+    'artists',
+    'tracks',
+    'dances'
+]
+
 def setup_tables():
     con.execute('''
         CREATE TABLE IF NOT EXISTS Artists(
