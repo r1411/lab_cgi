@@ -2,6 +2,7 @@ import cgi
 import sys 
 import os
 import inspect
+import xml.etree.ElementTree as ET
 currentdir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
 parentdir = os.path.dirname(currentdir)
 sys.path.insert(0, parentdir)
@@ -21,6 +22,32 @@ if (artist_name is not None) and (artist_birthday is not None) and (artist_count
         <div class="card">
             <div class="card-body">
                 Артист успешно добавлен
+            </div>
+        </div>
+    '''
+
+artists_xml = form.getfirst("xml_file")
+if artists_xml is not None:
+    root = ET.fromstring(artists_xml.decode("utf-8"))
+    success_cnt = 0
+    for child in root:
+        artist = {}
+        for a_ch in child:
+            if a_ch.tag == 'name':
+                artist['name'] = a_ch.text
+            if a_ch.tag == 'country':
+                artist['country'] = a_ch.text
+            if a_ch.tag == 'birthday':
+                artist['birthday'] = a_ch.text
+        if ('name' in artist) and ('country' in artist) and ('birthday' in artist):
+            db.add_artist(artist['name'], artist['birthday'], artist['country'])
+            success_cnt += 1
+
+    msg = f'''
+        <br>
+        <div class="card">
+            <div class="card-body">
+                Успешно загружено {success_cnt} артистов
             </div>
         </div>
     '''
@@ -54,6 +81,16 @@ template = '''
 
                 {msg}
             </div>
+
+             <h1>Загрузить из XML</h1>
+             <div class="ps-4 pe-4">
+                <form method="post" enctype="multipart/form-data">
+                    <label class="form-label" for="xml_file">XML Файл</label>
+                    <input class="form-control" name="xml_file" type="file" accept=".xml">
+                    <br>
+                    <input type="submit" class="btn btn-primary">
+                </form>
+             </div>
         </body>
     </html>
 '''
